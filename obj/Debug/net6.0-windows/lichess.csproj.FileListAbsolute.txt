@@ -1,0 +1,34 @@
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\bin\Debug\net6.0-windows\lichess.exe
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\bin\Debug\net6.0-windows\lichess.deps.json
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\bin\Debug\net6.0-windows\lichess.runtimeconfig.json
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\bin\Debug\net6.0-windows\lichess.dll
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\bin\Debug\net6.0-windows\lichess.pdb
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\obj\Debug\net6.0-windows\lichess.csproj.AssemblyReference.cache
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\obj\Debug\net6.0-windows\lichess.Form1.resources
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\obj\Debug\net6.0-windows\lichess.csproj.GenerateResource.cache
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\obj\Debug\net6.0-windows\lichess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\obj\Debug\net6.0-windows\lichess.AssemblyInfoInputs.cache
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\obj\Debug\net6.0-windows\lichess.AssemblyInfo.cs
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\obj\Debug\net6.0-windows\lichess.csproj.CoreCompileInputs.cache
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\obj\Debug\net6.0-windows\lichess.dll
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\obj\Debug\net6.0-windows\refint\lichess.dll
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\obj\Debug\net6.0-windows\lichess.pdb
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\obj\Debug\net6.0-windows\lichess.genruntimeconfig.cache
+C:\Users\student101.IT\Documents\Вепрев\Практическая 9,10\lichess\obj\Debug\net6.0-windows\ref\lichess.dll
+D:\projects\lichess\bin\Debug\net6.0-windows\lichess.exe
+D:\projects\lichess\bin\Debug\net6.0-windows\lichess.deps.json
+D:\projects\lichess\bin\Debug\net6.0-windows\lichess.runtimeconfig.json
+D:\projects\lichess\bin\Debug\net6.0-windows\lichess.dll
+D:\projects\lichess\bin\Debug\net6.0-windows\lichess.pdb
+D:\projects\lichess\obj\Debug\net6.0-windows\lichess.csproj.AssemblyReference.cache
+D:\projects\lichess\obj\Debug\net6.0-windows\lichess.Form1.resources
+D:\projects\lichess\obj\Debug\net6.0-windows\lichess.csproj.GenerateResource.cache
+D:\projects\lichess\obj\Debug\net6.0-windows\lichess.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\lichess\obj\Debug\net6.0-windows\lichess.AssemblyInfoInputs.cache
+D:\projects\lichess\obj\Debug\net6.0-windows\lichess.AssemblyInfo.cs
+D:\projects\lichess\obj\Debug\net6.0-windows\lichess.csproj.CoreCompileInputs.cache
+D:\projects\lichess\obj\Debug\net6.0-windows\lichess.dll
+D:\projects\lichess\obj\Debug\net6.0-windows\refint\lichess.dll
+D:\projects\lichess\obj\Debug\net6.0-windows\lichess.pdb
+D:\projects\lichess\obj\Debug\net6.0-windows\lichess.genruntimeconfig.cache
+D:\projects\lichess\obj\Debug\net6.0-windows\ref\lichess.dll
