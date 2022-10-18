@@ -7,10 +7,13 @@ namespace lichess
         private const string legal = "Legal";
         private Button[,] chessBoard;
         private List<Button> legalbuttons = new List<Button>();
+        Color first = Color.White;
+        Color second = Color.Gray;
 
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         public enum Pieces
@@ -32,22 +35,31 @@ namespace lichess
         private void CreateBoard()
         {
             int tileSize = 90;
-
-            Color first = Color.White;
-            Color second = Color.Gray;
+            this.Height = 900;
+            this.Width = 1500;
+            
 
             chessBoard = new Button[8, 8];
+            var panel = new Panel();
+            panel.Size = new Size(900,900);
+            panel.Location = new Point(0, 0);
+            
+            string word = "abcdefgh";
 
             for (int i = 0; i < 8; i++)
             {
+                var a = Convert.ToString(word[i]);
+                var label = SetLabel(tileSize * i, 750, a, ContentAlignment.MiddleCenter);
+                panel.Controls.Add(label);
+
 
                 for (int j = 0; j < 8; j++)
                 {
                     var button = new Button();
                     button.Size = new Size(tileSize, tileSize);
                     button.Location = new Point(tileSize * i, tileSize * j);
-
-                    Controls.Add(button);
+                    var labelNum = SetLabel(750, tileSize * j, Convert.ToString(j + 1), ContentAlignment.MiddleLeft);
+                    panel.Controls.Add(labelNum);
 
                     if ((i + j) % 2 == 0)
                     {
@@ -57,20 +69,37 @@ namespace lichess
                     {
                         button.BackColor = second;
                     }
+
                     button.Click += Spawn;
                     button.Tag = new Point(i, j);
                     chessBoard[i, j] = button;
+                    
+                    panel.Controls.Add(button);
+
 
                 }
 
             }
+
+            Controls.Add(panel);
+
+        }
+
+        private Label SetLabel(int x,int y, string text, ContentAlignment alignment)
+        {
+            var label = new Label();
+            label.Text = text;
+            label.BackColor = Color.Transparent;
+            label.Location = new Point(x, y);
+            label.TextAlign = alignment;
+            label.Font = new Font(label.Font.Name, 14f);
+            return label;
         }
 
         // main button event
         private void Spawn(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-           
             button.Text = comboBox1.Text;
             Point location = (Point)button.Tag;
             int x = location.X;
@@ -78,12 +107,15 @@ namespace lichess
             label1.Text = $"{x} {y}";
             ClearBoard(x, y);
             MarkLegalMove(x, y, (Pieces)comboBox1.SelectedIndex);
-
+            
 
         }
 
+
         private void MarkLegalMove(int x, int y, Pieces piece)
         {
+            // clear the chess board from light of legal moves
+            ClearBoard(x, y);
             switch (piece)
             {
                 case Pieces.Pawn:
@@ -91,22 +123,7 @@ namespace lichess
                         chessBoard[x, y - 1].Text = legal;
                     break;
                 case Pieces.Knight:
-                    if(IsSafe(x + 2, y + 1))
-                        chessBoard[x + 2, y + 1].Text = legal;
-                    if (IsSafe(x + 2, y - 1))
-                        chessBoard[x + 2, y - 1].Text = legal;
-                    if (IsSafe(x - 2, y + 1))
-                        chessBoard[x - 2, y + 1].Text = legal;
-                    if (IsSafe(x - 2, y - 1))
-                        chessBoard[x - 2, y - 1].Text = legal;
-                    if (IsSafe(x + 1, y + 2))
-                        chessBoard[x + 1, y + 2].Text = legal;
-                    if (IsSafe(x + 1, y - 2))
-                        chessBoard[x + 1, y - 2].Text = legal;
-                    if (IsSafe(x - 1, y + 2))
-                        chessBoard[x - 1, y + 2].Text = legal;
-                    if (IsSafe(x - 1, y - 2))
-                        chessBoard[x - 1, y - 2].Text = legal;
+                    Knight(x, y);
                     break;
                 case Pieces.Bishop:
                     Bishop(x, y);
@@ -119,12 +136,57 @@ namespace lichess
                     Rook(x,y);
                     break;
                 case Pieces.King:
+                    King(x, y);
                     break;
                 default:
                     break;
 
             }
+            // legal moves painting
+            AddLegalButtons();
 
+        }
+
+        private void Knight(int x, int y)
+        {
+            if (IsSafe(x + 2, y + 1))
+                chessBoard[x + 2, y + 1].Text = legal;
+            if (IsSafe(x + 2, y - 1))
+                chessBoard[x + 2, y - 1].Text = legal;
+            if (IsSafe(x - 2, y + 1))
+                chessBoard[x - 2, y + 1].Text = legal;
+            if (IsSafe(x - 2, y - 1))
+                chessBoard[x - 2, y - 1].Text = legal;
+            if (IsSafe(x + 1, y + 2))
+                chessBoard[x + 1, y + 2].Text = legal;
+            if (IsSafe(x + 1, y - 2))
+                chessBoard[x + 1, y - 2].Text = legal;
+            if (IsSafe(x - 1, y + 2))
+                chessBoard[x - 1, y + 2].Text = legal;
+            if (IsSafe(x - 1, y - 2))
+                chessBoard[x - 1, y - 2].Text = legal;
+        }
+
+        private void King(int x, int y)
+        {
+            if (IsSafe(x, y + 1))
+                chessBoard[x, y + 1].Text = legal;
+            if (IsSafe(x, y - 1))
+                chessBoard[x, y - 1].Text = legal;
+            if (IsSafe(x, y - 1))
+                chessBoard[x, y - 1].Text = legal;
+            if (IsSafe(x + 1, y + 1))
+                chessBoard[x + 1, y + 1].Text = legal;
+            if (IsSafe(x - 1, y - 1))
+                chessBoard[x - 1, y - 1].Text = legal;
+            if (IsSafe(x + 1, y))
+                chessBoard[x + 1, y].Text = legal;
+            if (IsSafe(x - 1, y))
+                chessBoard[x - 1, y].Text = legal;
+            if (IsSafe(x - 1, y + 1))
+                chessBoard[x - 1, y + 1].Text = legal;
+            if (IsSafe(x + 1, y - 1))
+                chessBoard[x + 1, y - 1].Text = legal;
         }
 
         private void Bishop(int x, int y)
@@ -165,7 +227,7 @@ namespace lichess
             }
         }
         
-        // buttons mark as legal
+        // add buttons in list mark as legal
         private void AddLegalButtons()
         {
             legalbuttons.Clear();
@@ -175,7 +237,8 @@ namespace lichess
                 {
                     if (chessBoard[i, j].Text == legal)
                     {
-                        legalbuttons.Add(chessBoard[i, j]);
+                        chessBoard[i, j].BackColor = Color.Green;
+                        legalbuttons.Add(chessBoard[i,j]);
                     }
                 }
             }
@@ -188,6 +251,15 @@ namespace lichess
             {
                 for (int j = 0; j < 8; j++)
                 {
+                    if ((i + j) % 2 == 0)
+                    {
+                        chessBoard[i,j].BackColor = first;
+                    }
+                    else
+                    {
+                        chessBoard[i,j].BackColor = second;
+                    }
+
                     if (chessBoard[x, y] == chessBoard[i, j])
                     {
 
@@ -195,6 +267,7 @@ namespace lichess
                     else
                     {
                         chessBoard[i, j].Text = "";
+                        
                     }
                 }
             }
@@ -244,6 +317,11 @@ namespace lichess
                     label2.Text = "Нельзя";
                 }
             }
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }
